@@ -10,6 +10,8 @@ import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
 import Testimonials from './components/Testimonials';
+import Skills from './components/Skills';
+
 
 export default function App() {
   useEffect(() => {
@@ -23,6 +25,7 @@ export default function App() {
       <Hero />
       <Projects />
       <About />
+      <Skills />
       <Testimonials />
       <Contact />
     </div>

@@ -10,7 +10,7 @@ export default function Navbar() {
     setDark(!dark);
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -22,17 +22,18 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed w-full backdrop-blur bg-white/70 dark:bg-gray-900/70 shadow z-50">
-      <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+    <nav className="fixed w-full backdrop-blur bg-white/70 dark:bg-gray-900/70 shadow z-50 transition-all duration-300">
+      <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
         <h1 className="text-xl font-bold text-gray-800 dark:text-white">Hemachandiran</h1>
-        <div className="flex gap-6 items-center">
-          {['home', 'projects', 'about', 'contact'].map((item) => (
+
+        <div className="flex items-center gap-6">
+          {['home', 'projects', 'about', 'skills', 'testimonials', 'contact'].map((section) => (
             <a
-              key={item}
-              href={`#${item}`}
-              className="hover:text-blue-600 capitalize text-gray-700 dark:text-gray-200 transition"
+              key={section}
+              href={`#${section}`}
+              className="capitalize text-gray-700 dark:text-gray-200 hover:text-blue-600 transition-colors duration-300"
             >
-              {item}
+              {section}
             </a>
           ))}
 
@@ -44,10 +45,9 @@ export default function Navbar() {
             {dark ? '🌞' : '🌙'}
           </button>
 
-          {/* Resume Dropdown */}
           <div className="relative" ref={menuRef}>
             <button
-              onClick={() => setShowResumeMenu(!showResumeMenu)}
+              onClick={() => setShowResumeMenu((prev) => !prev)}
               className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
             >
               Resume ▾

@@ -1,43 +1,69 @@
 import { motion } from 'framer-motion';
 
-export default function Testimonials() {
-  const items = [
-    {
-      title: 'Cisco Packet Tracer',
-      desc: 'Earned via Cisco Networking Academy'
-    },
-    {
-      title: 'HP Software Engineering Simulation',
-      desc: 'Hands-on virtual internship via Forage'
-    },
-    {
-      title: 'Internship — Codec Technologies',
-      desc: 'Analyzed datasets, built ML models & visualizations in Python '
-    },
-{
-      title: 'Internship — Conprg Technologies',
-      desc: 'Created websites as a full stack developer'
-    }
-  ];
+const testimonials = [
+  {
+    title: 'Cisco Packet Tracer',
+    desc: 'Earned via Cisco Networking Academy',
+    link: 'https://www.netacad.com/',
+  },
+  {
+    title: 'HP Software Engineering Simulation',
+    desc: 'Hands-on virtual internship via Forage',
+    link: 'https://www.theforage.com/',
+  },
+  {
+    title: 'Internship — Codec Technologies',
+    desc: 'Analyzed datasets, built ML models & visualizations in Python',
+    link: 'https://codec.com/',
+  },
+  {
+    title: 'Internship — Conprg Technologies',
+    desc: 'Created websites as a full stack developer',
+    link: 'https://example.com/',
+  },
+];
 
+export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 px-4 bg-gray-100 dark:bg-gray-800 text-center">
-      <h2 className="text-3xl font-bold mb-6">Certifications & Testimonials</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {items.map((item, i) => (
-          <motion.div
-            key={i}
-            className="bg-white dark:bg-gray-700 p-6 rounded shadow"
+    <motion.section
+      id="testimonials"
+      className="py-20 px-4 bg-gray-100 dark:bg-gray-900 text-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ staggerChildren: 0.2 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold mb-12 text-gray-800 dark:text-white"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Certifications & Testimonials
+      </motion.h2>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        {testimonials.map((item, index) => (
+          <motion.a
+            key={index}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-md border border-blue-100 dark:border-zinc-700 hover:shadow-blue-400/40 hover:scale-[1.03] transition-all duration-300"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.2 }}
+            transition={{ duration: 0.4, delay: index * 0.15 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">{item.desc}</p>
-          </motion.div>
+            <h3 className="text-xl font-semibold mb-2 text-blue-600 dark:text-blue-400">
+              {item.title}
+            </h3>
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              {item.desc}
+            </p>
+          </motion.a>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

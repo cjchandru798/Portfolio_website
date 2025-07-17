@@ -34,10 +34,10 @@ const projects = [
     tags: ['Java', 'Spring Boot', 'HTML/CSS']
   },
   {
-    title: 'Interactive Portfolio Website',
+    title: 'Portfolio Website',
     desc: 'Modern, responsive site showcasing skills and projects.',
     demo: 'https://example.com/portfolio',
-    code: 'https://github.com/username/portfolio',
+    code: 'https://github.com/cjchandru798/Portfolio_website.git',
     image: 'https://img.icons8.com/ios-filled/100/user.png',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design']
   },
@@ -47,7 +47,7 @@ const projects = [
     demo: 'https://example.com/gmail-app',
     code: 'https://github.com/cjchandru798/G-Mail-Sending-App.git',
     image: 'https://img.icons8.com/ios-filled/100/gmail.png',
-    tags: ['Node.js', 'Express', 'JavaScript']
+    tags: ['Node.js', 'Spring Boot', 'JavaScript','Java']
   }
 ];
 
@@ -72,7 +72,7 @@ export default function Projects() {
             <div className="flex justify-center items-center mb-4">
               <img src={proj.image} alt={proj.title} className="w-16 h-16 object-contain" />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white text-center">
+            <h3 className="text-xl font-semibold mb-2 text-blue-800 dark:text-blue-400 text-center">
               {proj.title}
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">{proj.desc}</p>

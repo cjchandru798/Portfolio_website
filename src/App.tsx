@@ -23,8 +23,8 @@ export default function App() {
       <Toaster position="top-center" />
       <Navbar />
       <Hero />
-      <Projects />
       <About />
+      <Projects />
       <Skills />
       <Testimonials />
       <Contact />

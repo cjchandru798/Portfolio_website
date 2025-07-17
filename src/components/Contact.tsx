@@ -122,7 +122,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto flex flex-col items-center justify-center space-y-4">
           <div className="flex gap-6 text-xl">
             <a
-              href="https://linkedin.com/in/your-linkedin-id"
+              href="https://www.linkedin.com/in/hemachandiran-a-242527300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-500 transition"
@@ -130,7 +130,7 @@ export default function Contact() {
               <FaLinkedin />
             </a>
             <a
-              href="https://github.com/your-github-username"
+              href="https://github.com/cjchandru798"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition"

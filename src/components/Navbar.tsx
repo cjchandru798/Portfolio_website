@@ -24,10 +24,12 @@ export default function Navbar() {
   return (
     <nav className="fixed w-full backdrop-blur bg-white/70 dark:bg-gray-900/70 shadow z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+        {/* Logo */}
         <h1 className="text-xl font-bold text-gray-800 dark:text-white">Hemachandiran</h1>
 
-        <div className="flex items-center gap-6">
-          {['home', 'projects', 'about', 'skills', 'testimonials', 'contact'].map((section) => (
+        {/* Center Nav Links */}
+        <div className="flex gap-6 text-sm md:text-base">
+          {['home', 'about', 'projects', 'skills', 'contact'].map((section) => (
             <a
               key={section}
               href={`#${section}`}
@@ -36,7 +38,11 @@ export default function Navbar() {
               {section}
             </a>
           ))}
+        </div>
 
+        {/* Right Section: Theme + Resume */}
+        <div className="flex items-center gap-4">
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="text-xl hover:scale-110 transition"
@@ -45,30 +51,31 @@ export default function Navbar() {
             {dark ? '🌞' : '🌙'}
           </button>
 
+          {/* Resume Dropdown */}
           <div className="relative" ref={menuRef}>
             <button
               onClick={() => setShowResumeMenu((prev) => !prev)}
-              className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+              className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition flex items-center gap-1"
             >
-              Resume ▾
+              📄 Resume ▾
             </button>
 
             {showResumeMenu && (
-              <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-10">
+              <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-10 animate-fade-in">
                 <a
                   href="/Hemachandiran-Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="block px-4 py-3 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  🔍 Preview Resume
+                  🔍 <span className="font-medium">Preview</span>
                 </a>
                 <a
                   href="/Hemachandiran-Resume.pdf"
                   download
-                  className="block px-4 py-2 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="block px-4 py-3 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  ⬇️ Download Resume
+                  ⬇️ <span className="font-medium">Download</span>
                 </a>
               </div>
             )}

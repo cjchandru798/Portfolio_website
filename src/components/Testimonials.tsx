@@ -4,22 +4,18 @@ const testimonials = [
   {
     title: 'Cisco Packet Tracer',
     desc: 'Earned via Cisco Networking Academy',
-    link: 'https://www.netacad.com/',
   },
   {
     title: 'HP Software Engineering Simulation',
     desc: 'Hands-on virtual internship via Forage',
-    link: 'https://www.theforage.com/',
   },
   {
     title: 'Internship — Codec Technologies',
     desc: 'Analyzed datasets, built ML models & visualizations in Python',
-    link: 'https://codec.com/',
   },
   {
     title: 'Internship — Conprg Technologies',
     desc: 'Created websites as a full stack developer',
-    link: 'https://example.com/',
   },
 ];
 
@@ -44,12 +40,9 @@ export default function Testimonials() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
         {testimonials.map((item, index) => (
-          <motion.a
+          <motion.div
             key={index}
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-md border border-blue-100 dark:border-zinc-700 hover:shadow-blue-400/40 hover:scale-[1.03] transition-all duration-300"
+            className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-md border border-blue-100 dark:border-zinc-700 hover:shadow-blue-400/40 transition-all duration-300"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.15 }}
@@ -61,7 +54,7 @@ export default function Testimonials() {
             <p className="text-sm text-gray-700 dark:text-gray-300">
               {item.desc}
             </p>
-          </motion.a>
+          </motion.div>
         ))}
       </div>
     </motion.section>

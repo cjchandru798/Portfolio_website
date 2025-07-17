@@ -23,7 +23,7 @@ export default function Testimonials() {
   return (
     <motion.section
       id="testimonials"
-      className="py-20 px-4 bg-gray-100 dark:bg-gray-900 text-center"
+      className="py-20 px-4 bg-gray-100 dark:bg-gray-800 text-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

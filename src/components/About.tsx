@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { FaUserGraduate, FaProjectDiagram, FaTools } from 'react-icons/fa';
 
-// Custom hook for animated counting
+// Animated counting hook
 function useCountUp(end: number, inView: boolean, duration = 1500) {
   const [count, setCount] = useState(0);
 
@@ -27,21 +27,30 @@ function useCountUp(end: number, inView: boolean, duration = 1500) {
   return count;
 }
 
-// Single stat item component
-function StatItem({ icon: Icon, label, end }: { icon: any; label: string; end: number }) {
+// Individual Stat Card with hover animation
+function StatItem({
+  icon: Icon,
+  label,
+  end,
+}: {
+  icon: any;
+  label: string;
+  end: number;
+}) {
   const ref = useRef(null);
-  const isInView = useInView(ref); // <- removed `once: true`
+  const isInView = useInView(ref);
   const count = useCountUp(end, isInView);
 
   return (
     <motion.div
       ref={ref}
-      className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-md flex flex-col items-center w-56"
+      className="bg-gray-100 dark:bg-zinc-800 rounded-2xl shadow-md p-6 w-56 flex flex-col items-center hover:shadow-blue-400/30 transition-transform"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.5 }}
     >
-      <Icon className="text-indigo-600 dark:text-indigo-400 text-3xl mb-2" />
+      <Icon className="text-3xl mb-2 text-blue-600 dark:text-blue-400" />
       <span className="text-3xl font-bold text-gray-900 dark:text-white">{count}</span>
       <p className="text-gray-600 dark:text-gray-300 mt-1 text-base">{label}</p>
     </motion.div>
@@ -52,13 +61,13 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="py-20 px-4 bg-gray-50 dark:bg-gray-800 text-center"
+      className="py-20 px-4 bg-white dark:bg-gray-900 text-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      viewport={{ once: true }} // this affects the section fade-in only
+      viewport={{ once: true }}
     >
-      <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">About Me</h2>
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">About Me</h2>
       <p className="max-w-3xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-10">
         Passionate full-stack developer with a knack for crafting clean, fast, and scalable applications.
         I value great UX, modern design, and elegant code.

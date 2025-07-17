@@ -57,7 +57,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-20 bg-white text-gray-900 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black dark:text-white"
+      className="py-20 px-4 bg-white dark:bg-gray-900"
     >
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold mb-2">My Skills</h2>

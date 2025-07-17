@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
-import { SiJavascript, SiHtml5, SiCss3 , SiSpring, SiNodedotjs, SiExpress, SiReact } from 'react-icons/si';
+import { SiJavascript, SiHtml5, SiCss3, SiSpring, SiNodedotjs, SiExpress, SiReact } from 'react-icons/si';
+import { FaJava } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaJava } from "react-icons/fa"; // Font Awesome
 
 const iconMap = {
   JavaScript: <SiJavascript className="text-yellow-400" />,
@@ -10,10 +10,10 @@ const iconMap = {
   CSS3: <SiCss3 className="text-blue-500" />,
   Java: <FaJava className="text-red-600" />,
   'Spring Boot': <SiSpring className="text-green-500" />,
-  'HTML/CSS': <><SiHtml5 className="text-orange-500" /> <SiCss3 className="text-blue-500" /></>,
+  'HTML/CSS': <><SiHtml5 className="text-orange-500" /><SiCss3 className="text-blue-500 ml-1" /></>,
   'Responsive Design': <SiReact className="text-cyan-400" />,
   'Node.js': <SiNodedotjs className="text-green-600" />,
-  Express: <SiExpress className="text-gray-300" />
+  Express: <SiExpress className="text-gray-300" />,
 };
 
 const projects = [
@@ -47,15 +47,15 @@ export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-white dark:bg-gray-900" data-aos="fade-up">
-      <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+    <section id="projects" className="py-20 px-4 bg-white dark:bg-gray-900">
+      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Featured Projects</h2>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
         {projects.map((proj, i) => (
           <motion.div
             key={i}
-            whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(59,130,246,0.8)' }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="rounded-lg overflow-hidden shadow-lg bg-gradient-to-br from-cyan-500 to-blue-500 text-white cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            className="rounded-xl overflow-hidden shadow-md bg-gradient-to-br from-blue-500 to-cyan-500 text-white cursor-pointer transition duration-300"
+            style={{ boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)' }}
             onClick={() => setSelected(proj)}
           >
             <div className="flex justify-center items-center h-32 bg-white dark:bg-gray-800">
@@ -89,7 +89,7 @@ export default function Projects() {
             onClick={() => setSelected(null)}
           >
             <motion.div
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-md w-full text-center"
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl max-w-md w-full text-center"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
@@ -102,18 +102,20 @@ export default function Projects() {
                 {selected.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="flex items-center gap-1 bg-black/10 dark:bg-white/10 text-xs px-2 py-1 rounded-full"
+                    className="flex items-center gap-1 bg-blue-100/30 dark:bg-blue-900/30 text-xs px-2 py-1 rounded-full"
                   >
                     {iconMap[tag]} {tag}
                   </span>
                 ))}
               </div>
               <div className="flex justify-center gap-4">
-                <a href={selected.code} target="_blank" className="text-blue-600 hover:underline flex items-center gap-1">
-                  <FaGithub /> View Code
+                <a href={selected.code} target="_blank" rel="noopener noreferrer"
+                   className="text-blue-600 hover:underline flex items-center gap-1">
+                  <FaGithub /> Code
                 </a>
-                <a href={selected.demo} target="_blank" className="text-green-600 hover:underline flex items-center gap-1">
-                  <FaExternalLinkAlt /> Live Demo
+                <a href={selected.demo} target="_blank" rel="noopener noreferrer"
+                   className="text-green-600 hover:underline flex items-center gap-1">
+                  <FaExternalLinkAlt /> Demo
                 </a>
               </div>
             </motion.div>

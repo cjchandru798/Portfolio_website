@@ -1,13 +1,22 @@
 import { useState } from 'react';
-import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { FaGithub, FaJava } from 'react-icons/fa';
 import {
   SiJavascript, SiHtml5, SiCss3, SiSpring,
-  SiNodedotjs, SiExpress, SiReact
+  SiNodedotjs, SiExpress, SiReact,SiDotnet,
 } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { JSX } from 'react';
 
-const iconMap = {
+interface Project {
+  title: string;
+  desc: string;
+  demo?: string;
+  code: string;
+  image: string;
+  tags: string[];
+}
+
+const iconMap: Record<string, JSX.Element> = {
   JavaScript: <SiJavascript className="text-yellow-400" />,
   HTML5: <SiHtml5 className="text-orange-500" />,
   CSS3: <SiCss3 className="text-blue-500" />,
@@ -22,13 +31,14 @@ const iconMap = {
   'Responsive Design': <SiReact className="text-cyan-400" />,
   'Node.js': <SiNodedotjs className="text-green-600" />,
   Express: <SiExpress className="text-gray-300" />,
+  DotNet: <SiDotnet className="text-purple-600" />, // ← new icon added here
+
 };
 
-const projects = [
+const projects: Project[] = [
   {
     title: 'Salon Appointment Booking Web Application',
     desc: 'A comprehensive booking platform using Java Spring Boot.',
-
     code: 'https://github.com/cjchandru798/Salon-Appointment-Booking.git',
     image: 'https://img.icons8.com/ios-filled/100/calendar.png',
     tags: ['Java', 'Spring Boot', 'HTML/CSS']
@@ -47,15 +57,22 @@ const projects = [
     demo: 'https://example.com/gmail-app',
     code: 'https://github.com/cjchandru798/G-Mail-Sending-App.git',
     image: 'https://img.icons8.com/ios-filled/100/gmail.png',
-    tags: ['Node.js', 'Spring Boot', 'JavaScript','Java']
+    tags: ['Node.js', 'Spring Boot', 'JavaScript', 'Java']
+  },
+  {
+    title: 'Simple Appointment Booking',
+    desc: 'An app for sending emails using Gmail SMTP integration.',
+    code: 'https://github.com/cjchandru798/simple-appointment-booking.git',
+    image: 'https://img.icons8.com/ios-filled/100/calendar.png',
+    tags: ['Node.js', 'Spring Boot', 'JavaScript', 'DotNet']
   }
 ];
 
 export default function Projects() {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-white dark:bg-gray-900">
+    <section id="projects" className="py-20 px-4 bg-white dark:bg-gray-800">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">
         Featured Projects
       </h2>
@@ -70,7 +87,7 @@ export default function Projects() {
             onClick={() => setSelected(proj)}
           >
             <div className="flex justify-center items-center mb-4">
-              <img src={proj.image} alt={proj.title} className="w-16 h-16 object-contain" />
+              <img src={proj.image} alt={proj.title} className="w-12 h-12 object-contain" />
             </div>
             <h3 className="text-xl font-semibold mb-2 text-blue-800 dark:text-blue-400 text-center">
               {proj.title}
@@ -132,7 +149,6 @@ export default function Projects() {
                 >
                   <FaGithub /> Code
                 </a>
-
               </div>
             </motion.div>
           </motion.div>

@@ -14,19 +14,21 @@ import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 
 export default function Contact() {
-  const form = useRef();
-
-  const sendEmail = (e) => {
+const form = useRef<HTMLFormElement>(null);
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_ja5eovk', 'template_k5bs7zc', form.current, 'xZCaIA8PhYr7Ag53N')
+    if (!form.current) return; // extra safety check
+
+    emailjs.sendForm('service_ja5eovk', 'template_k5bs7zc', form.current!, 'xZCaIA8PhYr7Ag53N')
       .then(() => {
         toast.success('✅ Message sent successfully!');
-        form.current.reset();
+        form.current?.reset();
       }, (error) => {
         toast.error('❌ Failed to send message: ' + error.text);
       });
   };
+
 
   return (
     <>
@@ -101,7 +103,7 @@ export default function Contact() {
 
             <textarea
               name="message"
-              rows="4"
+              rows={4}
               placeholder="Your Message"
               required
               className="w-full p-3 rounded-md border dark:border-gray-700 dark:bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"

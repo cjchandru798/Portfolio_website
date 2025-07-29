@@ -8,6 +8,7 @@ import {
   SiJavascript,
   SiHtml5,
   SiCss3,
+  SiDotnet
 } from 'react-icons/si';
 
 import {
@@ -41,6 +42,7 @@ const categories = [
       { name: 'VS Code', icon: FaMicrosoft, color: 'text-blue-500' },
       { name: 'IntelliJ', icon: FaCode, color: 'text-purple-600' },
       { name: 'GitHub', icon: FaGithub, color: 'text-gray-800 dark:text-gray-300' },
+      { name: 'Dotnet', icon: SiDotnet, color: 'text-purple-600' },
     ],
   },
   {
@@ -78,7 +80,7 @@ export default function Skills() {
           >
             <h3 className="text-xl font-semibold mb-4 text-blue-500">{category.title}</h3>
             <div className="grid grid-cols-2 gap-4">
-              {category.skills.map((skill, idx) => {
+              {category.skills.map((skill, _idx) => {
                 const Icon = skill.icon;
                 return (
                   <motion.div

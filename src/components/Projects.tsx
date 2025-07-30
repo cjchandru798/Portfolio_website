@@ -72,7 +72,7 @@ export default function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-white dark:bg-gray-800">
+    <section id="projects" className="py-20 px-4 bg-gray-100 dark:bg-gray-800">
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">
         Featured Projects
       </h2>

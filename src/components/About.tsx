@@ -61,7 +61,7 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="py-20 px-4 bg-gray-100 dark:bg-gray-900 text-center"
+      className="py-20 px-4 bg-white dark:bg-gray-900 text-center"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}

@@ -21,6 +21,9 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Correct PDF path using Vite base URL
+  const resumePath = `${import.meta.env.BASE_URL}Hemachandiran-Resume.pdf`;
+
   return (
     <nav className="fixed w-full backdrop-blur bg-white/70 dark:bg-gray-900/70 shadow z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
@@ -63,7 +66,7 @@ export default function Navbar() {
             {showResumeMenu && (
               <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg z-10 animate-fade-in">
                 <a
-                  href="/Hemachandiran-Resume.pdf"
+                  href={resumePath}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-4 py-3 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -71,7 +74,7 @@ export default function Navbar() {
                   🔍 <span className="font-medium">Preview</span>
                 </a>
                 <a
-                  href="/Hemachandiran-Resume.pdf"
+                  href={resumePath}
                   download
                   className="block px-4 py-3 text-sm text-gray-800 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
